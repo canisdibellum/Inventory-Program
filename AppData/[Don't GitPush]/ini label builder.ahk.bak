@@ -1,0 +1,26 @@
+ini := A_ScriptDir . "\info.ini"
+csv := A_ScriptDir . "\Inventory.csv"
+
+FileRead, Inv, %csv%
+
+loop, parse, Inv, `n, `r
+{
+	StringSplit, Field, A_Loopfield, `,
+  if (Field2 = "")
+    Continue
+  StringSplit, Label, Field2, -
+  IniRead, Highest, %ini%, Labels, %Label1%, 0
+  if (Label2 > Highest)
+    iniwrite, %LabelNum%, %ini%, Labels, %LabelName%
+}
+
+;~ IniRead, Highest, %ini%, Labels, %Label1%, 0
+
+;~ lblnum := 10
+
+
+;~ IniWrite, %lblnum%, %ini%, Labels, %LabelName%
+
+;~ cols := "a|b|c|d|e|f"
+;~ StringSplit, cols, cols, |
+;~ MsgBox, %cols0%
